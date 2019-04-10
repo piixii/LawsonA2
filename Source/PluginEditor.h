@@ -16,7 +16,9 @@
 //==============================================================================
 /**
 */
-class LawsonA2AudioProcessorEditor  : public AudioProcessorEditor
+class LawsonA2AudioProcessorEditor  : public AudioProcessorEditor, Slider::Listener
+
+
 {
 public:
     LawsonA2AudioProcessorEditor (LawsonA2AudioProcessor&);
@@ -29,6 +31,15 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
+    
+    Slider mixSlider;
+    Slider freqSlider;
+    
+    Label mixLabel;
+    Label freqLabel;
+    
+    void sliderValueChanged(Slider* slider) override;
+    
     LawsonA2AudioProcessor& processor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LawsonA2AudioProcessorEditor)

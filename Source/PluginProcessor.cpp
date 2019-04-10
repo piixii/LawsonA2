@@ -102,8 +102,15 @@ void LawsonA2AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     currentSampleRate = sampleRate;
-    sinFreq = 1.0f;
+    sinFreq = 20.0f;
     updateangleDelta();
+    
+    mixLevel.reset(sampleRate, 0.05f);
+    mixLevel.setTargetValue(0.25f);
+    mixLevel = (0.15f);
+    
+    gain.setGainDecibels(12.0f);
+    
     
     String message;
     message << "Preparing to play..." << newLine;
@@ -183,22 +190,21 @@ void LawsonA2AudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffe
             
             //calculate value to put into buffer
             auto currentSinSample = (float) std::sin(currentAngle);
-            currentAngle += angleDelta; //currentAngle = currentAngle + angleDelta
-            //deviations = modulator (deviations from original sin wave) to make the sine wave wiggle
-//            float modulator = random.nextFloat() * 0.25f - 0.125f;
-            wetData[sample] = wetData[sample] * currentSinSample;
+            currentAngle += angleDelta;
+            wetData[sample] = wetData[sample] * 0.5f;
             
             auto shapedSample = jlimit((float) -0.8, (float) 0.8, wetData[sample]);
-//            auto shapedSample = (32 >> 1) * (float) std::atan(16 * wetData[sample] / 32);
             wetData[sample] = shapedSample;
             
-            
-            //adding the original dry signal to processed signal into our output buffer (aka input buffer)
+//adding the original dry signal to processed signal into our output buffer (aka input buffer)
             channelData[sample] = channelData[sample] * 0.3f + wetData[sample] * 0.7f;
 //            hard clipping
             channelData[sample] = jlimit ((float) -0.1, (float) 0.1, wetData[sample]);
+            channelData[sample] = channelData[sample] * (0.25f - mixLevel.getNextValue()) + wetData[sample] * mixLevel.getNextValue();
         }
     }
+    dsp::AudioBlock<float> output(buffer);
+    gain.process(dsp::ProcessContextReplacing<float> (output));
     
 }
 

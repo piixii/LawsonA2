@@ -145,6 +145,10 @@
 			isa = PBXBuildFile;
 			fileRef = 9EA6C117BEA3A15AE9E260DA;
 		};
+		D75FF59EDFFE80C2D4FE382E = {
+			isa = PBXBuildFile;
+			fileRef = CA56186CC0829995AD2891F1;
+		};
 		ECFBA21D9D11CF1DC5C6FA92 = {
 			isa = PBXBuildFile;
 			fileRef = 7FC5E22CBD1294DABDA4A949;
@@ -375,13 +379,6 @@
 			path = ../../Source/PluginProcessor.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		7FC5E22CBD1294DABDA4A949 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = "include_juce_events.mm";
-			path = "../../JuceLibraryCode/include_juce_events.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
 		811AE3B244A9A0CD54050122 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -409,6 +406,20 @@
 			includeInIndex = 0;
 			path = lawsonA2.app;
 			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		7FC5E22CBD1294DABDA4A949 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_events.mm";
+			path = "../../JuceLibraryCode/include_juce_events.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		88ED191C7E7A2023BAF93468 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_dsp";
+			path = "/Users/sabrina/sdks/JUCE/modules/juce_dsp";
+			sourceTree = "<absolute>";
 		};
 		893025E44D113823A1C8879E = {
 			isa = PBXFileReference;
@@ -529,6 +540,13 @@
 			path = "/Users/sabrina/sdks/JUCE/modules/juce_gui_basics";
 			sourceTree = "<absolute>";
 		};
+		CA56186CC0829995AD2891F1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_dsp.mm";
+			path = "../../JuceLibraryCode/include_juce_dsp.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
 		CC79E120D0C0D50E4D69ED2B = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -630,6 +648,7 @@
 				46EAC73F3255B12EEF1AD736,
 				B9870723AAA6D4E2D35EFC6E,
 				5FEE9FC876A0B161413A8160,
+				88ED191C7E7A2023BAF93468,
 				893025E44D113823A1C8879E,
 				974425A50DA8592F5669587F,
 				C8CC9BA63B9F449757D072CA,
@@ -658,6 +677,7 @@
 				E7D902A734068AE03DF35551,
 				A2E858EA5250896538F5F26D,
 				9EA6C117BEA3A15AE9E260DA,
+				CA56186CC0829995AD2891F1,
 				7FC5E22CBD1294DABDA4A949,
 				601F8559DCE19DA0832321DD,
 				18FE8268DEB05C69966B1B56,
@@ -778,7 +798,7 @@
 				);
 				INFOPLIST_FILE = Info-VST3.plist;
 				INFOPLIST_PREPROCESS = NO;
-				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
+				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -llawsonA2";
@@ -1491,6 +1511,7 @@
 				905D64149BAF33B61B293F9A,
 				7E8D1F0F5A9016AAE5DC542C,
 				3BB74AC2DF05267E93760779,
+				D75FF59EDFFE80C2D4FE382E,
 				ECFBA21D9D11CF1DC5C6FA92,
 				DFCEF985FC6392B19F8BD4EA,
 				912DB74A29F1346F24B99C58,

@@ -56,12 +56,17 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     AudioBuffer<float> returnAudioBuffer;
+    dsp::Gain<float> gain;
+    SmoothedValue<float> mixLevel;
 
 private:
     float currentSampleRate;
     float currentAngle;
     float angleDelta;
     float sinFreq;
+    
+    //dsp::Gain<float> gain;
+    
     
     void updateangleDelta();
     Random random;
